@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Frontera;
-
+import Entidad.Usuario;
+import Control.ValidarLogin;
 /**
  *
  * @author Estudiante
@@ -44,6 +45,11 @@ public class Ingreso extends javax.swing.JPanel {
         });
 
         jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,7 +90,31 @@ public class Ingreso extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_contraseniaTFActionPerformed
 
-
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         Usuario usuario = new Usuario();
+        usuario.setNombre(nombreTF.getText());
+        usuario.setPassword(contraseniaTF.getText());
+        
+        ValidarLogin validar = new ValidarLogin();
+        
+        System.out.println("-------------");
+        String resultado = validar.verificarLogin(usuario);
+        System.out.println(resultado);
+    }//GEN-LAST:event_jButton1ActionPerformed
+    /*private void  aceptarBActionPerformed(java.awt.event.ActionEvent evt){
+        
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombreTF.getText());
+        usuario.setPassword(contraseniaTF.getText());
+        
+        ValidarLogin validar = new ValidarLogin();
+        
+        System.out.println("-------------");
+        String resultado = validar.verificarLogin(usuario);
+        System.out.println(resultado);
+    }
+*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField contraseniaTF;
     private javax.swing.JButton jButton1;
