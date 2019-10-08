@@ -5,6 +5,10 @@
  */
 package Control;
 
+/**
+ *
+ * @author Estudiante
+ */
 import Entidad.Usuario;
 import Frontera.FramePrincipal;
 import Entidad.Sistema;
@@ -12,11 +16,11 @@ import Entidad.Sistema;
  *
  * @author Estudiante
  */
-public class ValidarLogin {
+public class CrearLogin {
     
     private Sistema sistema = FramePrincipal.sistema;
     
-    public ValidarLogin(){
+    public CrearLogin(){
         
     }
     
@@ -24,12 +28,13 @@ public class ValidarLogin {
         if (!verificarLongitudNombre(usuario.getNombre())){
             return("Longitud nombre incorrecta");
         }
+        
         if (!verificarLongitudPassword(usuario.getPassword())){
             return ("Longitud contraseña incorrecta");
         }
         for (Usuario u: sistema.getUsuarios()){
             if (u.getNombre().equals(usuario.getNombre()) &&  u.getPassword().equals(usuario.getPassword())){
-            return ("Bienvenido");            
+            return ("Ya Registrado");            
         }
         }
         return ("Datos incorrectos");
