@@ -118,6 +118,7 @@ public class Registro extends javax.swing.JPanel {
         usuario.setNombre(nombreTF.getText());
         usuario.setPassword(contraseniaTF.getText());
         
+        
         CrearLogin crear = new CrearLogin();
         
         System.out.println("-------------");

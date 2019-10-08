@@ -28,7 +28,7 @@ public class TestLogin {
     private String LONG_NOMBRE_INCORRECTA = "Longitud nombre incorrecta";
     private String LONG_PASSWORD_INCORRECTA = "Longitud contraseña incorrecta";
     private String DATOS_INCORRECTOS = "Datos incorrectos";
-    private String USUARIO_AUTORIZADO = "Binenvenido";
+    private String USUARIO_AUTORIZADO = "Bienvenido";
     
     public TestLogin() {
     }
@@ -88,5 +88,63 @@ public class TestLogin {
          u.setPassword("123456");
          assertEquals(validarLogin.verificarLogin(u), LONG_NOMBRE_INCORRECTA);
          
+     }
+     
+     @Test
+     public void testLongitudContrasenia() {
+         Usuario u = new Usuario();
+         u.setNombre("Pepe");
+         u.setPassword("12");
+         assertEquals(validarLogin.verificarLogin(u), LONG_PASSWORD_INCORRECTA);
+         
+         u.setNombre("Pepe");
+         u.setPassword("123456");
+         assertEquals(validarLogin.verificarLogin(u), LONG_PASSWORD_INCORRECTA);
+         
+     }
+     
+     @Test
+     public void testNombre(){
+         
+         Usuario u = new Usuario();
+         u.setNombre("Henry");
+         u.setPassword("12345");
+         assertEquals(validarLogin.verificarLogin(u), DATOS_INCORRECTOS);
+     }
+     
+     @Test
+     public void testContrasenia(){
+         
+         Usuario u = new Usuario();
+         u.setNombre("maria");
+         u.setPassword("1234");
+         assertEquals(validarLogin.verificarLogin(u), DATOS_INCORRECTOS);
+     }
+     
+     @Test
+     public void testDatos(){
+         
+         Usuario u = new Usuario();
+         u.setNombre("Henry");
+         u.setPassword("A234");
+         assertEquals(validarLogin.verificarLogin(u), DATOS_INCORRECTOS);
+     }
+     
+     @Test
+     public void testTodoCorrecto(){
+         
+         Usuario u = new Usuario();
+         
+         u.setNombre("juan");
+         u.setPassword("1234");
+         assertEquals(validarLogin.verificarLogin(u), USUARIO_AUTORIZADO);
+         
+         u.setNombre("pedro");
+         u.setPassword("123");
+         assertEquals(validarLogin.verificarLogin(u), USUARIO_AUTORIZADO);
+         
+         u.setNombre("maria");
+         u.setPassword("12345");
+         assertEquals(USUARIO_AUTORIZADO, validarLogin.verificarLogin(u));
      }
 }
